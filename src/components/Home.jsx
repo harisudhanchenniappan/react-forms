@@ -155,12 +155,12 @@ function Home() {
               <li key={form._id} style={styles.formItem}>
                 <h3>{form.title}</h3>
                 <a
-                  href={`http://localhost:5173/form/${form._id}`}
+                  href={`${window.location.origin}/form/${form._id}`}  // Use dynamic URL for deployment
                   target="_blank"
                   rel="noopener noreferrer"
                   style={styles.link}
                 >
-                  {`http://localhost:5173/form/${form._id}`}
+                  {`${window.location.origin}/form/${form._id}`}
                 </a>
                 <button
                   style={{
