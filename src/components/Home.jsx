@@ -155,12 +155,12 @@ function Home() {
               <li key={form._id} style={styles.formItem}>
                 <h3>{form.title}</h3>
                 <a
-                  href={`https://reactforms1611.netlify.app/form/${form._id}`}
+                  href={`http://localhost:5173/form/${form._id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={styles.link}
                 >
-                  {`https://reactforms1611.netlify.app/form/${form._id}`}
+                  {`http://localhost:5173/form/${form._id}`}
                 </a>
                 <button
                   style={{
