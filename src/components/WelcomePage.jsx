@@ -53,7 +53,7 @@ function WelcomePage() {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.header}>Welcome to Google Forms Clone</h1>
+      <h1 style={styles.header}>Welcome to React Forms</h1>
       <p style={styles.leadText}>
         Create, share, and manage forms effortlessly with our powerful tool. Whether it's for surveys,
         feedback, or data collection, we've got you covered!
@@ -66,7 +66,7 @@ function WelcomePage() {
         
       </div>
 
-      <h3 style={styles.sectionTitle}>Why Use Google Forms Clone?</h3>
+      <h3 style={styles.sectionTitle}>Why Use React Forms?</h3>
       <ul style={styles.list}>
         <li>📝 Easy-to-use form builder with customizable options.</li>
         <li>📊 Real-time response tracking and analysis.</li>
