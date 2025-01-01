@@ -77,58 +77,83 @@ function Responses() {
     }
   };
 
+  // Define the styles object
+  const styles = {
+    container: {
+      maxWidth: "800px",
+      margin: "20px auto",
+      padding: "20px",
+      fontFamily: "'Arial', sans-serif",
+      backgroundColor: "#f9f9f9",
+      borderRadius: "8px",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    },
+    heading: {
+      textAlign: "center",
+      color: "#333",
+      fontWeight: "bold",
+    },
+    listContainer: {
+      marginBottom: "20px",
+    },
+    listItem: {
+      marginBottom: "10px",
+    },
+    button: {
+      padding: "5px 10px",
+      borderRadius: "5px",
+      cursor: "pointer",
+      marginLeft: "10px",
+    },
+    viewButton: {
+      backgroundColor: "#3498db",
+      color: "#fff",
+    },
+    deleteButton: {
+      backgroundColor: "#e74c3c",
+      color: "#fff",
+    },
+    responseTable: {
+      width: "100%",
+      borderCollapse: "collapse",
+      textAlign: "left",
+      marginTop: "15px",
+    },
+    tableHeader: {
+      backgroundColor: "#f2f2f2",
+      padding: "10px",
+    },
+    tableCell: {
+      padding: "10px",
+      borderBottom: "1px solid #ddd",
+    },
+  };
+
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        margin: "20px auto",
-        padding: "20px",
-        fontFamily: "'Arial', sans-serif",
-        backgroundColor: "#f9f9f9",
-        borderRadius: "8px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <h2 style={{ textAlign: "center", color: "#333", fontWeight: "bold" }}>Form Responses</h2>
-      <div style={{ marginBottom: "20px" }}>
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Form Responses</h2>
+      <div style={styles.listContainer}>
         <h3 style={{ color: "#555" }}>All Forms</h3>
         {forms.length === 0 ? (
           <p style={{ color: "#888" }}>No forms created yet.</p>
         ) : (
           <ol>
             {forms.map((form) => (
-              <li key={form._id} style={{ marginBottom: "10px" }}>
-               
+              <li key={form._id} style={styles.listItem}>
                 <Link
                   to={`/form/${form._id}`}
-                  style={styles.link}
+                  style={{ textDecoration: "none", color: "#3498db", fontWeight: "bold" }}
                 >
-                   {form.title || "Untitled Form"}
+                  {form.title || "Untitled Form"}
                 </Link>
                 <button
-                  style={{
-                    marginLeft: "10px",
-                    padding: "5px 10px",
-                    backgroundColor: "#3498db",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                  }}
+                  style={{ ...styles.button, ...styles.viewButton }}
                   onClick={() => fetchResponses(form._id)}
                 >
                   View Responses
                 </button>
                 <button
-                  style={{
-                    marginLeft: "10px",
-                    padding: "5px 10px",
-                    backgroundColor: "#e74c3c",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                  }}
+                  style={{ ...styles.button, ...styles.deleteButton }}
                   onClick={() => deleteForm(form._id)}
                 >
                   Delete Form
@@ -148,57 +173,30 @@ function Responses() {
             </span>
           </h3>
           {responses.length > 0 ? (
-            <table
-              border="1"
-              cellPadding="10"
-              style={{
-                width: "100%",
-                borderCollapse: "collapse",
-                textAlign: "left",
-                marginTop: "15px",
-              }}
-            >
+            <table style={styles.responseTable}>
               <thead>
                 <tr>
-                  <th style={{ backgroundColor: "#f2f2f2", padding: "10px" }}>#</th>
+                  <th style={styles.tableHeader}>#</th>
                   {getQuestions(selectedForm).map((question, idx) => (
-                    <th
-                      key={idx}
-                      style={{
-                        backgroundColor: "#f2f2f2",
-                        padding: "10px",
-                        fontWeight: "bold",
-                        color: "#555",
-                      }}
-                    >
+                    <th key={idx} style={styles.tableHeader}>
                       {question.text || "Untitled Question"}
                     </th>
                   ))}
-                  <th style={{ backgroundColor: "#f2f2f2", padding: "10px" }}>Action</th>
+                  <th style={styles.tableHeader}>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {responses.map((response, index) => (
                   <tr key={response._id}>
-                    <td style={{ padding: "10px", borderBottom: "1px solid #ddd" }}>{index + 1}</td>
+                    <td style={styles.tableCell}>{index + 1}</td>
                     {response.answers.map((answer, idx) => (
-                      <td
-                        key={idx}
-                        style={{ padding: "10px", borderBottom: "1px solid #ddd", color: "#555" }}
-                      >
+                      <td key={idx} style={styles.tableCell}>
                         {answer || "No Answer"}
                       </td>
                     ))}
-                    <td style={{ padding: "10px", borderBottom: "1px solid #ddd" }}>
+                    <td style={styles.tableCell}>
                       <button
-                        style={{
-                          padding: "5px 10px",
-                          backgroundColor: "#e74c3c",
-                          color: "#fff",
-                          border: "none",
-                          borderRadius: "5px",
-                          cursor: "pointer",
-                        }}
+                        style={{ ...styles.button, ...styles.deleteButton }}
                         onClick={() => deleteResponse(selectedForm, response._id)}
                       >
                         Delete
