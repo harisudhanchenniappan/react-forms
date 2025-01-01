@@ -154,14 +154,13 @@ function Home() {
             {forms.map((form) => (
               <li key={form._id} style={styles.formItem}>
                 <h3>{form.title}</h3>
-                <a
-                  href={`${window.location.origin}/form/${form._id}`}  // Use dynamic URL for deployment
-                  target="_blank"
-                  rel="noopener noreferrer"
+                {/* Replaced <a> with <Link> */}
+                <Link
+                  to={`/form/${form._id}`}
                   style={styles.link}
                 >
                   {`${window.location.origin}/form/${form._id}`}
-                </a>
+                </Link>
                 <button
                   style={{
                     ...styles.button,

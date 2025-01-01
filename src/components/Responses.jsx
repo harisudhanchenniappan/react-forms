@@ -97,14 +97,13 @@ function Responses() {
           <ol>
             {forms.map((form) => (
               <li key={form._id} style={{ marginBottom: "10px" }}>
-                <a
-                  href={`https://reactforms1611.netlify.app/form/${form._id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: "none", color: "#3498db", fontWeight: "bold" }}
+               
+                <Link
+                  to={`/form/${form._id}`}
+                  style={styles.link}
                 >
-                  {form.title || "Untitled Form"}
-                </a>
+                   {form.title || "Untitled Form"}
+                </Link>
                 <button
                   style={{
                     marginLeft: "10px",
