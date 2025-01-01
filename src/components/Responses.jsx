@@ -98,7 +98,7 @@ function Responses() {
             {forms.map((form) => (
               <li key={form._id} style={{ marginBottom: "10px" }}>
                 <a
-                  href={`http://localhost:5173/form/${form._id}`}
+                  href={`https://reactforms1611.netlify.app/form/${form._id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none", color: "#3498db", fontWeight: "bold" }}

@@ -48,7 +48,7 @@ function CreateForm() {
         questions,
         username,
       });
-      alert(`Form created! Share this link: http://localhost:5173/form/${response.data.id}`);
+      alert(`Form created! Share this link: https://reactforms1611.netlify.app/form/${response.data.id}`);
       navigate("/home");
     } catch (error) {
       console.error("Error creating form:", error);
