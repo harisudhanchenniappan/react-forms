@@ -141,7 +141,7 @@ function Responses() {
             {forms.map((form) => (
               <li key={form._id} style={styles.listItem}>
                 <Link
-                  to={`/form/${form._id}`}
+                  to={`https://submit-form-1611.netlify.app/?id=${form._id}`}
                   style={{ textDecoration: "none", color: "#3498db", fontWeight: "bold" }}
                 >
                   {form.title || "Untitled Form"}

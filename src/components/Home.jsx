@@ -156,10 +156,10 @@ function Home() {
                 <h3>{form.title}</h3>
                 {/* Replaced <a> with <Link> */}
                 <Link
-                  to={`/form/${form._id}`}
+                  to={`https://submit-form-1611.netlify.app/?id=${form._id}`}
                   style={styles.link}
                 >
-                  {`${window.location.origin}/form/${form._id}`}
+                  {`https://submit-form-1611.netlify.app/?id=${form._id}`}
                 </Link>
                 <button
                   style={{
