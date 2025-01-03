@@ -4,11 +4,15 @@ import Mains from "./Mains";
 
 function App() {
   return (
+    <div>
     <Router>
       <Routes>
         <Route path="/form/:id" element={<Mains />} />
       </Routes>
-    </Router>
+      </Router>
+      <Link to='/form/677528884fc0007a80dd91aa'>toooo</Link>
+    </div>
+    
   );
 }
 
