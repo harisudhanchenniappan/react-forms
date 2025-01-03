@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 function Mains() {
-  const { id } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const id = queryParams.get("id"); // Extract `id` from the query string
+
   const [form, setForm] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [isSubmitted, setIsSubmitted] = useState(false); // New state to track submission
 
   useEffect(() => {
-    axios.get(`https://react-forms-ltej.onrender.com/forms/${id}`).then((response) => {
-      setForm(response.data);
-      const initialAnswers = response.data.questions.map((q) => {
-        if (q.type === "checkbox") return [];
-        return "";
+    if (id) {
+      axios.get(`https://react-forms-ltej.onrender.com/forms/${id}`).then((response) => {
+        setForm(response.data);
+        const initialAnswers = response.data.questions.map((q) => {
+          if (q.type === "checkbox") return [];
+          return "";
+        });
+        setAnswers(initialAnswers);
       });
-      setAnswers(initialAnswers);
-    });
+    }
   }, [id]);
 
   const handleAnswerChange = (index, value) => {
