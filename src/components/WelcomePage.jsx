@@ -4,43 +4,53 @@ import { Link } from "react-router-dom";
 function WelcomePage() {
   const styles = {
     container: {
-      fontFamily: "'Roboto', sans-serif",
-      padding: "2rem",
-      backgroundColor: "#f9f9f9",
-      color: "#333",
-      borderRadius: "8px",
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      fontFamily: "'Poppins', sans-serif",
+      padding: "3rem",
+      backgroundColor: "#eef2f3",
+      color: "#1a202c",
+      borderRadius: "10px",
+      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.1)",
       textAlign: "center",
-      maxWidth: "800px",
+      maxWidth: "900px",
       margin: "2rem auto",
     },
     header: {
-      color: "#2c3e50",
-      fontWeight: "bold",
-      marginBottom: "1rem",
+      color: "#2d3748",
+      fontWeight: "800",
+      fontSize: "2.5rem",
+      marginBottom: "1.5rem",
     },
     leadText: {
-      color: "#7f8c8d",
+      color: "#4a5568",
       marginBottom: "2rem",
-      fontSize: "1.1rem",
+      fontSize: "1.2rem",
+      lineHeight: "1.8",
     },
     buttonContainer: {
+      display: "flex",
+      justifyContent: "center",
       marginBottom: "2rem",
     },
     button: {
-      backgroundColor: "#3498db",
+      backgroundColor: "#3182ce",
       color: "#fff",
       padding: "0.8rem 2rem",
-      fontSize: "1.1rem",
-      fontWeight: "bold",
+      fontSize: "1rem",
+      fontWeight: "600",
       border: "none",
-      borderRadius: "5px",
+      borderRadius: "6px",
       textDecoration: "none",
       margin: "0 1rem",
+      transition: "background-color 0.3s ease, transform 0.2s ease",
+    },
+    buttonHover: {
+      backgroundColor: "#2b6cb0",
+      transform: "scale(1.05)",
     },
     sectionTitle: {
-      color: "#2980b9",
-      fontWeight: "bold",
+      color: "#2c5282",
+      fontWeight: "700",
+      fontSize: "1.8rem",
       marginTop: "2rem",
       marginBottom: "1rem",
     },
@@ -48,6 +58,21 @@ function WelcomePage() {
       textAlign: "left",
       margin: "0 auto",
       maxWidth: "600px",
+      color: "#2d3748",
+      fontSize: "1rem",
+      lineHeight: "1.8",
+      padding: "0",
+      listStyleType: "none",
+    },
+    listItem: {
+      marginBottom: "0.8rem",
+      display: "flex",
+      alignItems: "center",
+    },
+    icon: {
+      marginRight: "0.8rem",
+      color: "#3182ce",
+      fontSize: "1.2rem",
     },
   };
 
@@ -55,36 +80,52 @@ function WelcomePage() {
     <div style={styles.container}>
       <h1 style={styles.header}>Welcome to React Forms</h1>
       <p style={styles.leadText}>
-        Create, share, and manage forms effortlessly with our powerful tool. Whether it's for surveys,
-        feedback, or data collection, we've got you covered!
+        Simplify your form-building process with our intuitive tool. From surveys to data collection, create stunning forms effortlessly and securely!
       </p>
 
       <div style={styles.buttonContainer}>
-        <Link to="/login-signup" style={styles.button}>
+        <Link
+          to="/login-signup"
+          style={styles.button}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = styles.buttonHover.backgroundColor;
+            e.target.style.transform = styles.buttonHover.transform;
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = styles.button.backgroundColor;
+            e.target.style.transform = "scale(1)";
+          }}
+        >
           Login/Signup
         </Link>
-        
       </div>
 
-      <h3 style={styles.sectionTitle}>Why Use React Forms?</h3>
+      <h3 style={styles.sectionTitle}>Why Choose React Forms?</h3>
       <ul style={styles.list}>
-        <li>📝 Easy-to-use form builder with customizable options.</li>
-        <li>📊 Real-time response tracking and analysis.</li>
-        <li>🔗 Shareable links to collect data from anywhere.</li>
-        <li>🛡️ Secure and reliable platform for all your needs.</li>
+        <li style={styles.listItem}>
+          <span style={styles.icon}>📝</span> Build professional forms with ease.
+        </li>
+        <li style={styles.listItem}>
+          <span style={styles.icon}>📊</span> Track responses in real-time.
+        </li>
+        <li style={styles.listItem}>
+          <span style={styles.icon}>🔗</span> Share forms anywhere effortlessly.
+        </li>
+        <li style={styles.listItem}>
+          <span style={styles.icon}>🛡️</span> Secure and reliable platform.
+        </li>
       </ul>
 
       <h3 style={styles.sectionTitle}>How It Works</h3>
-      <ol style={styles.list}>
-        <li>1️⃣ Sign in with your account.</li>
-        <li>2️⃣ Create and design your form using our builder.</li>
-        <li>3️⃣ Share the link with your audience.</li>
-        <li>4️⃣ View and analyze the responses in real-time.</li>
+      <ol style={{ ...styles.list, listStyleType: "decimal", paddingLeft: "20px" }}>
+        <li style={{ marginBottom: "1rem" }}>Sign in with your account.</li>
+        <li style={{ marginBottom: "1rem" }}>Design your form using our builder.</li>
+        <li style={{ marginBottom: "1rem" }}>Share the link with your audience.</li>
+        <li style={{ marginBottom: "1rem" }}>Analyze responses in real-time.</li>
       </ol>
 
       <p style={styles.leadText}>
-        Ready to get started? Click the buttons above and experience the ease of form creation like never
-        before!
+        Ready to start? Click the button above and revolutionize your form-building experience today!
       </p>
     </div>
   );
